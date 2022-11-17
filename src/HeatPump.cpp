@@ -93,7 +93,9 @@ bool HeatPump::connect(HardwareSerial *serial, int bitrate) {
 }
 
 bool HeatPump::connect(HardwareSerial *serial, int rx, int tx) {
-	return connect(serial, 0, 32, 26);
+	rx = 32;
+	tx = 26;
+	return connect(serial, 0, rx, tx);
 }
 
 bool HeatPump::connect(HardwareSerial *serial, int bitrate, int rx, int tx) {
@@ -106,9 +108,11 @@ bool HeatPump::connect(HardwareSerial *serial, int bitrate, int rx, int tx) {
     retry = true;
   }
   connected = false;
+  rx = 32;
+  tx = 26;
   if (rx >= 0 && tx >= 0) {
 #if defined(ESP32)    
-    _HardSerial->begin(bitrate, SERIAL_8E1, 32, 26);
+    _HardSerial->begin(bitrate, SERIAL_8E1, rx, tx);
 #else
     _HardSerial->begin(bitrate, SERIAL_8E1);
 #endif    
