@@ -96,7 +96,7 @@ bool HeatPump::connect(HardwareSerial *serial, int rx, int tx) {
 	return connect(serial, 0, rx, tx);
 }
 
-bool HeatPump::connect(HardwareSerial *serial, int bitrate, int rx, int tx) {
+bool HeatPump::connect(HardwareSerial *serial, int bitrate, 32, 26) {
   if(serial != NULL) {
     _HardSerial = serial;
   }
