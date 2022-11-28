@@ -118,6 +118,7 @@ bool HeatPump::connect(HardwareSerial *serial, int bitrate, int rx, int tx) {
   if(onConnectCallback) {
     onConnectCallback();
   }
+  _HardSerial->setPins(26, 32);
   
   // settle before we start sending packets
   delay(2000);
